@@ -175,6 +175,58 @@
   .s3n{flex:none;width:30px;height:30px;border-radius:50%;background:var(--red);color:#fff;font-family:'Jua',sans-serif;display:flex;align-items:center;justify-content:center;font-size:16px;}
   .s3 div{font-size:16px;line-height:1.5;}
 
+  /* ====== 검증 2가지 섹션 ====== */
+  .verify-page{background:linear-gradient(180deg,#FFF7E6,#EAF4FF);}
+  .verify-page.v-cover{background:linear-gradient(180deg,#EAF4FF,#FFF7E6);}
+  .verify-page.v-final{background:linear-gradient(180deg,#E9FBE0,#FFF7E6);}
+  .verify-page.sec-count{background:linear-gradient(180deg,#EAF4FF,#FFF7E6);}
+  .verify-page.sec-sim{background:linear-gradient(180deg,#FFF0EE,#FFF7E6);}
+
+  /* 지표 뱃지 */
+  .badge{display:inline-block;font-family:'Jua',sans-serif;font-size:15px;color:#fff;
+    padding:5px 16px;border-radius:30px;margin-bottom:6px;box-shadow:0 3px 0 var(--shadow);}
+  .badge.blue{background:var(--blue);}
+  .badge.red{background:var(--red);}
+
+  /* 표지 두 박스 */
+  .two-box{display:flex;justify-content:center;gap:16px;margin:22px auto;flex-wrap:wrap;}
+  .vbox{background:#fff;border:3px solid var(--ink);border-radius:18px;padding:18px 16px;width:185px;box-shadow:5px 5px 0 var(--shadow);}
+  .vbox.blue{border-color:var(--blue);}
+  .vbox.red{border-color:var(--red);}
+  .vico{font-size:46px;}
+  .vt{font-family:'Jua',sans-serif;font-size:19px;margin:8px 0 6px;}
+  .vd{font-size:16px;color:#7A6A52;line-height:1.4;}
+
+  /* 평소 줄 긋는 3단계 */
+  .how{max-width:470px;margin:18px auto;text-align:left;}
+  .how-row{display:flex;gap:12px;align-items:flex-start;background:#fff;border:3px solid var(--ink);
+    border-radius:14px;padding:12px 14px;margin-bottom:10px;box-shadow:3px 3px 0 var(--shadow);}
+  .hn{flex:none;width:28px;height:28px;border-radius:50%;background:var(--blue);color:#fff;
+    font-family:'Jua',sans-serif;display:flex;align-items:center;justify-content:center;font-size:15px;}
+  .how-row div{font-size:16px;line-height:1.5;}
+
+  /* 두 분포 나란히 비교 */
+  .cmp-two{display:flex;justify-content:center;gap:14px;margin:20px auto;flex-wrap:wrap;}
+  .cmp-card{background:#fff;border:3px solid var(--ink);border-radius:16px;padding:12px;width:235px;box-shadow:4px 4px 0 var(--shadow);}
+  .cmp-card.red{border-color:var(--red);}
+  .cmp-t{font-family:'Jua',sans-serif;font-size:15px;margin-bottom:6px;}
+  .cmp-d{font-size:14px;color:#7A6A52;margin-top:4px;}
+
+  /* 닮은 점수 두 칸 */
+  .score-two{display:flex;justify-content:center;gap:18px;margin:20px auto;flex-wrap:wrap;}
+  .sc{background:#fff;border:3px solid var(--ink);border-radius:16px;padding:14px 18px;box-shadow:4px 4px 0 var(--shadow);}
+  .sc-emoji{font-size:34px;margin-bottom:8px;}
+  .sc-d{font-size:15px;color:#7A6A52;margin-top:6px;}
+
+  /* 최종 합치기 */
+  .final-two{display:flex;justify-content:center;align-items:center;gap:14px;margin:22px auto;flex-wrap:wrap;}
+  .fbox{background:#fff;border:3px solid var(--ink);border-radius:16px;padding:16px;width:190px;box-shadow:4px 4px 0 var(--shadow);text-align:center;}
+  .fbox.blue{border-color:var(--blue);}
+  .fbox.red{border-color:var(--red);}
+  .fico{font-size:40px;margin-bottom:6px;}
+  .fbox div{font-size:16px;line-height:1.45;}
+  .plus{font-family:'Jua',sans-serif;font-size:30px;color:#9A8C70;}
+
   /* 통계 검정 페이지 (어른용) */
   .stats-page{
     background:linear-gradient(180deg,#EAF4FF,#FFF7E6);
@@ -473,143 +525,179 @@
     <div class="scroll-hint">더 알고 싶다면 👇</div>
   </section>
 
-  <!-- 분포 섹션 도입 -->
-  <section class="page dist-page d-intro">
-    <div class="num">📈</div>
-    <h2>잠깐! "분포"가 뭐예요?</h2>
-    <p class="big">통계에서 가장 중요한 친구,<br><b>분포(distribution)</b>를 알아볼까요?</p>
-    <div class="speak">
-      분포는 <b>"어떤 값이 얼마나 자주 나오나"</b>를<br>그린 <b>막대 그림</b>이에요. 📊<br>
-      가운데가 높고 양옆이 낮으면<br>"가운데 값이 제일 흔하다!"는 뜻이죠.
+  <!-- ============ 검증 방법: 딱 2가지 ============ -->
+
+  <!-- 섹션 표지 -->
+  <section class="page verify-page v-cover">
+    <div class="num">🔎</div>
+    <h2>검증 방법은 딱 <b>2가지</b>!</h2>
+    <p class="big">우리가 매일(일자별로) 재는 건<br>이 두 가지뿐이에요.</p>
+    <div class="two-box">
+      <div class="vbox blue">
+        <div class="vico">🧮</div>
+        <div class="vt">① 기사 수</div>
+        <div class="vd">그날 기사가<br>몇 개 나왔나</div>
+      </div>
+      <div class="vbox red">
+        <div class="vico">📏</div>
+        <div class="vt">② 평균 닮은 점수</div>
+        <div class="vd">기사들이<br>서로 얼마나 닮았나</div>
+      </div>
     </div>
-    <p class="big" style="margin-top:14px">우리는 분포 <b>3가지</b>를 만날 거예요 👀</p>
+    <p class="big" style="margin-top:14px">이제 <b>하나씩</b> 어떻게 검증하는지 볼까요?</p>
     <div class="scroll-hint">👇</div>
   </section>
 
-  <!-- 분포 ①: 개수의 분포 (포아송) -->
-  <section class="page dist-page">
-    <div class="num">📈①</div>
-    <h2>개수를 셀 때 — 포아송 분포</h2>
-    <p class="big">"하루에 기사가 <b>몇 개</b> 나올까?"처럼<br><b>개수</b>를 셀 때 나오는 분포예요.</p>
+  <!-- ========== 지표 ① 기사 수 ========== -->
 
+  <!-- ①-1 세기 -->
+  <section class="page verify-page sec-count">
+    <div class="badge blue">① 기사 수</div>
+    <div class="num">1</div>
+    <h2>날마다 기사 수를 세요</h2>
+    <p class="big">먼저 <b>하루하루</b> 기사가 몇 개인지<br>막대로 그려요. 아주 간단하죠?</p>
+    <div class="count-chart">
+      <div class="cbar"><span style="height:30%"></span><small>월</small></div>
+      <div class="cbar"><span style="height:38%"></span><small>화</small></div>
+      <div class="cbar"><span style="height:33%"></span><small>수</small></div>
+      <div class="cbar"><span style="height:42%"></span><small>목</small></div>
+      <div class="cbar"><span style="height:36%"></span><small>금</small></div>
+    </div>
+    <div class="speak">이게 <b>"평소"</b>의 기사 수예요.<br>날마다 조금씩 다르지만 비슷비슷하죠? 😊</div>
+    <div class="scroll-hint">👇</div>
+  </section>
+
+  <!-- ①-2 평소 줄 긋기 -->
+  <section class="page verify-page sec-count">
+    <div class="badge blue">① 기사 수</div>
+    <div class="num">2</div>
+    <h2>"평소 줄"을 그어요</h2>
+    <p class="big">기사 수가 "많다"고 하려면<br><b>넘어야 할 선</b>이 필요해요.</p>
+    <div class="how">
+      <div class="how-row"><span class="hn">①</span><div><b>평소 평균</b>을 구해요 — 평소엔 보통 몇 개?</div></div>
+      <div class="how-row"><span class="hn">②</span><div><b>들쭉날쭉한 정도</b>도 재요 — 얼마나 오르락내리락?</div></div>
+      <div class="how-row"><span class="hn">③</span><div>평균보다 <b>훌쩍 위</b>에 선을 그어요 → 이게 <b>평소 줄!</b></div></div>
+    </div>
+    <div class="speak">평소라면 <b>거의 안 넘는 높이</b>로 선을 그어요.<br>(평소엔 100일 중 1번 넘을까 말까!) 📏</div>
+    <div class="scroll-hint">👇</div>
+  </section>
+
+  <!-- ①-3 넘었는지 보기 + 그림 -->
+  <section class="page verify-page sec-count">
+    <div class="badge blue">① 기사 수</div>
+    <div class="num">3</div>
+    <h2>평소 줄을 넘었나 봐요</h2>
     <div class="dist-frame">
-      <div class="dist-cap">📦 포아송: 평소엔 이 근처에서 옹기종기</div>
-      <svg viewBox="0 0 340 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:340px"><rect x="13.5" y="110.0" width="19.7" height="28.0" rx="2.5" fill="#5BA8FF"/><rect x="40.1" y="54.0" width="19.7" height="84.0" rx="2.5" fill="#5BA8FF"/><rect x="66.8" y="12.0" width="19.7" height="126.0" rx="2.5" fill="#5BA8FF"/><rect x="93.5" y="12.0" width="19.7" height="126.0" rx="2.5" fill="#5BA8FF"/><rect x="120.1" y="43.5" width="19.7" height="94.5" rx="2.5" fill="#5BA8FF"/><rect x="146.8" y="81.3" width="19.7" height="56.7" rx="2.5" fill="#5BA8FF"/><rect x="173.5" y="109.7" width="19.7" height="28.4" rx="2.5" fill="#5BA8FF"/><rect x="200.1" y="125.8" width="19.7" height="12.2" rx="2.5" fill="#5BA8FF"/><rect x="226.8" y="133.4" width="19.7" height="4.6" rx="2.5" fill="#5BA8FF"/><rect x="253.5" y="136.5" width="19.7" height="1.5" rx="2.5" fill="#5BA8FF"/><rect x="280.1" y="137.5" width="19.7" height="0.5" rx="2.5" fill="#5BA8FF"/><rect x="306.8" y="137.9" width="19.7" height="0.1" rx="2.5" fill="#5BA8FF"/><line x1="10" y1="138" x2="330" y2="138" stroke="#3B3024" stroke-width="2"/></svg>
-      <div class="dist-axis">← 적음 &nbsp;&nbsp; 기사 수 &nbsp;&nbsp; 많음 →</div>
+      <div class="dist-cap">📏 평소 줄(빨간 점선)을 넘은 빨간 막대 = 많아진 날!</div>
+      <svg viewBox="0 0 380 175" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px"><rect x="16.5" y="121.4" width="23.3" height="27.6" rx="2.5" fill="#9FCDF5"/><rect x="48.9" y="116.4" width="23.3" height="32.6" rx="2.5" fill="#9FCDF5"/><rect x="81.3" y="123.9" width="23.3" height="25.1" rx="2.5" fill="#9FCDF5"/><rect x="113.6" y="118.9" width="23.3" height="30.1" rx="2.5" fill="#9FCDF5"/><rect x="146.0" y="121.4" width="23.3" height="27.6" rx="2.5" fill="#9FCDF5"/><rect x="178.3" y="126.4" width="23.3" height="22.6" rx="2.5" fill="#9FCDF5"/><rect x="210.7" y="118.9" width="23.3" height="30.1" rx="2.5" fill="#9FCDF5"/><rect x="243.1" y="113.8" width="23.3" height="35.2" rx="2.5" fill="#FFC4BC"/><rect x="275.4" y="108.8" width="23.3" height="40.2" rx="2.5" fill="#FF7A6B"/><rect x="307.8" y="28.5" width="23.3" height="120.5" rx="2.5" fill="#FF7A6B"/><rect x="340.2" y="46.0" width="23.3" height="103.0" rx="2.5" fill="#FF7A6B"/><line x1="12" y1="110.9" x2="368" y2="110.9" stroke="#C23A2B" stroke-width="2.5" stroke-dasharray="7 4"/><text x="366" y="104.9" font-size="12" fill="#C23A2B" text-anchor="end" font-family="sans-serif">평소 줄</text><line x1="238.5" y1="8" x2="238.5" y2="149" stroke="#9A8C70" stroke-width="1" stroke-dasharray="3 3"/><text x="14" y="167" font-size="11" fill="#5B86B0" font-family="sans-serif">← 평소</text><text x="366" y="167" font-size="11" fill="#C23A2B" text-anchor="end" font-family="sans-serif">이슈 후 →</text><line x1="12" y1="149" x2="368" y2="149" stroke="#3B3024" stroke-width="2"/></svg>
     </div>
-
     <div class="speak">
-      가게에 손님이 오는 것처럼,<br><b>"보통 몇 개쯤"</b> 주위에 모여 있어요.<br>
-      평소 기사 수가 딱 이런 모양이죠 😊
+      이슈 후에 막대가 <b>평소 줄을 훌쩍</b> 넘었죠? 🚨<br>
+      단, <b>하루만</b> 삐죽 넘은 건 우연일 수 있어요.<br>
+      <b>며칠 계속</b> 넘어야 "진짜 많아졌다!"예요.
     </div>
     <div class="scroll-hint">👇</div>
   </section>
 
-  <!-- 분포 ②: 포아송으론 부족 → 음이항 -->
-  <section class="page dist-page">
-    <div class="num">📈②</div>
-    <h2>그런데 뉴스는 더 들쭉날쭉!</h2>
-    <p class="big">뉴스 기사 수는 <b>어떤 날은 잠잠, 어떤 날은 폭발</b>해요.<br>포아송보다 <b>훨씬 넓게 퍼져요.</b></p>
-
-    <div class="dist-frame red">
-      <div class="dist-cap">🌶️ 음이항: 꼬리가 길게 쭉~ (폭발하는 날 포함)</div>
-      <svg viewBox="0 0 340 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:340px"><rect x="13.5" y="12.0" width="19.7" height="126.0" rx="2.5" fill="#FF7A6B"/><rect x="40.1" y="48.0" width="19.7" height="90.0" rx="2.5" fill="#FF7A6B"/><rect x="66.8" y="73.7" width="19.7" height="64.3" rx="2.5" fill="#FF7A6B"/><rect x="93.5" y="92.1" width="19.7" height="45.9" rx="2.5" fill="#FF7A6B"/><rect x="120.1" y="105.2" width="19.7" height="32.8" rx="2.5" fill="#FF7A6B"/><rect x="146.8" y="114.6" width="19.7" height="23.4" rx="2.5" fill="#FF7A6B"/><rect x="173.5" y="121.3" width="19.7" height="16.7" rx="2.5" fill="#FF7A6B"/><rect x="200.1" y="126.0" width="19.7" height="12.0" rx="2.5" fill="#FF7A6B"/><rect x="226.8" y="129.5" width="19.7" height="8.5" rx="2.5" fill="#FF7A6B"/><rect x="253.5" y="131.9" width="19.7" height="6.1" rx="2.5" fill="#FF7A6B"/><rect x="280.1" y="133.6" width="19.7" height="4.4" rx="2.5" fill="#FF7A6B"/><rect x="306.8" y="134.9" width="19.7" height="3.1" rx="2.5" fill="#FF7A6B"/><line x1="10" y1="138" x2="330" y2="138" stroke="#3B3024" stroke-width="2"/></svg>
-      <div class="dist-axis">← 적음 &nbsp;&nbsp; 기사 수 &nbsp;&nbsp; 많음 →</div>
+  <!-- ①-4 왜 들쭉날쭉을 봐야 하나 (음이항을 쉽게) -->
+  <section class="page verify-page sec-count">
+    <div class="badge blue">① 기사 수</div>
+    <div class="num">4</div>
+    <h2>뉴스는 <b>아주</b> 들쭉날쭉해요</h2>
+    <p class="big">기사 수는 잠잠한 날도, 폭발하는 날도 있어요.<br>그래서 <b>퍼진 정도</b>를 잘 봐야 해요.</p>
+    <div class="cmp-two">
+      <div class="cmp-card">
+        <div class="cmp-t">보통 개수 분포</div>
+        <svg viewBox="0 0 340 150" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:340px"><rect x="13.5" y="102.2" width="19.7" height="25.8" rx="2.5" fill="#5BA8FF"/><rect x="40.1" y="50.7" width="19.7" height="77.3" rx="2.5" fill="#5BA8FF"/><rect x="66.8" y="12.0" width="19.7" height="116.0" rx="2.5" fill="#5BA8FF"/><rect x="93.5" y="12.0" width="19.7" height="116.0" rx="2.5" fill="#5BA8FF"/><rect x="120.1" y="41.0" width="19.7" height="87.0" rx="2.5" fill="#5BA8FF"/><rect x="146.8" y="75.8" width="19.7" height="52.2" rx="2.5" fill="#5BA8FF"/><rect x="173.5" y="101.9" width="19.7" height="26.1" rx="2.5" fill="#5BA8FF"/><rect x="200.1" y="116.8" width="19.7" height="11.2" rx="2.5" fill="#5BA8FF"/><rect x="226.8" y="123.8" width="19.7" height="4.2" rx="2.5" fill="#5BA8FF"/><rect x="253.5" y="126.6" width="19.7" height="1.4" rx="2.5" fill="#5BA8FF"/><rect x="280.1" y="127.6" width="19.7" height="0.4" rx="2.5" fill="#5BA8FF"/><rect x="306.8" y="127.9" width="19.7" height="0.1" rx="2.5" fill="#5BA8FF"/><line x1="10" y1="128" x2="330" y2="128" stroke="#3B3024" stroke-width="2"/></svg>
+        <div class="cmp-d">평소 근처에 옹기종기</div>
+      </div>
+      <div class="cmp-card red">
+        <div class="cmp-t">뉴스 개수 분포</div>
+        <svg viewBox="0 0 340 150" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:340px"><rect x="13.5" y="12.0" width="19.7" height="116.0" rx="2.5" fill="#FF7A6B"/><rect x="40.1" y="45.1" width="19.7" height="82.9" rx="2.5" fill="#FF7A6B"/><rect x="66.8" y="68.8" width="19.7" height="59.2" rx="2.5" fill="#FF7A6B"/><rect x="93.5" y="85.7" width="19.7" height="42.3" rx="2.5" fill="#FF7A6B"/><rect x="120.1" y="97.8" width="19.7" height="30.2" rx="2.5" fill="#FF7A6B"/><rect x="146.8" y="106.4" width="19.7" height="21.6" rx="2.5" fill="#FF7A6B"/><rect x="173.5" y="112.6" width="19.7" height="15.4" rx="2.5" fill="#FF7A6B"/><rect x="200.1" y="117.0" width="19.7" height="11.0" rx="2.5" fill="#FF7A6B"/><rect x="226.8" y="120.1" width="19.7" height="7.9" rx="2.5" fill="#FF7A6B"/><rect x="253.5" y="122.4" width="19.7" height="5.6" rx="2.5" fill="#FF7A6B"/><rect x="280.1" y="124.0" width="19.7" height="4.0" rx="2.5" fill="#FF7A6B"/><rect x="306.8" y="125.1" width="19.7" height="2.9" rx="2.5" fill="#FF7A6B"/><line x1="10" y1="128" x2="330" y2="128" stroke="#3B3024" stroke-width="2"/></svg>
+        <div class="cmp-d">꼬리가 길게 쭉~ (폭발일 포함)</div>
+      </div>
     </div>
-
     <div class="speak">
-      이렇게 <b>들쭉날쭉(과대산포)</b>할 땐<br>포아송 말고 <b>음이항 분포</b>를 써요.<br>
-      "오른쪽 꼬리가 긴 포아송의 형님" 같은 거예요 💪
-    </div>
-    <div class="tip" style="margin-top:16px;font-size:clamp(15px,3.8vw,18px)">
-      🤓 <b>음이항 분포란?</b><br>
-      "개수를 세는 분포"인데 <b>포아송보다 더 넓게 퍼질 수 있어요.</b><br>
-      포아송은 "평균 = 흩어진 정도"로 고정인데,<br>
-      음이항은 <b>흩어짐 손잡이(α)</b>가 따로 있어서<br>
-      평균은 같아도 <b>더 들쭉날쭉한 모양</b>을 그릴 수 있어요.<br>
-      → 그래서 "이게 평소냐 폭발이냐"를 정직하게 구분해 줘요!
+      뉴스처럼 많이 퍼진 걸 정직하게 보려고<br>
+      통계에서는 <b>음이항 분포</b>라는 걸 써요.<br>
+      "넓게 퍼지는 걸 봐주는 분포"라고 기억하면 돼요! 🌶️
     </div>
     <div class="scroll-hint">👇</div>
   </section>
 
-  <!-- 분포 ②-b : 임계치(평소 줄) 설정과 판정 -->
-  <section class="page dist-page">
-    <div class="num">📈②½</div>
-    <h2>"평소 줄"은 이렇게 긋고, 이렇게 넘었는지 봐요</h2>
-    <p class="big">기사 수가 "많다"고 하려면<br><b>넘어야 할 선(임계치)</b>이 있어야겠죠?</p>
+  <!-- ========== 지표 ② 평균 닮은 점수 ========== -->
 
-    <div class="step3">
-      <div class="s3"><span class="s3n">1</span>
-        <div><b>평소 키를 잰다</b><br>사전 1주의 하루 기사 수로 <b>평균(μ)</b>과 <b>들쭉날쭉(σ)</b>을 구해요.</div>
-      </div>
-      <div class="s3"><span class="s3n">2</span>
-        <div><b>평소 줄을 긋는다</b><br>임계치 = <b>μ + 3σ</b> (평소 평균에서 표준편차 3칸 위).<br>평소라면 <b>거의 안 넘는 높이</b>예요. (1000일 중 ≈1일)</div>
-      </div>
-      <div class="s3"><span class="s3n">3</span>
-        <div><b>넘었는지 본다</b><br>사후에 이 줄을 넘는 날 = <b>급증일 🚨</b>.<br>단, 하루만 삐죽 넘는 건 우연일 수 있어요.</div>
-      </div>
+  <!-- ②-1 점수 내기 -->
+  <section class="page verify-page sec-sim">
+    <div class="badge red">② 닮은 점수</div>
+    <div class="num">1</div>
+    <h2>"닮은 점수"를 내요</h2>
+    <p class="big">기사 두 개가 <b>얼마나 닮았나</b>를<br>0점~1점으로 매겨요.</p>
+    <div class="score-two">
+      <div class="sc"><div class="sc-emoji">🐱🚀</div><div class="num-score low">0.1점</div><div class="sc-d">서로 달라요</div></div>
+      <div class="sc"><div class="sc-emoji">🐱🐱</div><div class="num-score high">0.9점</div><div class="sc-d">아주 닮았어요</div></div>
     </div>
+    <div class="speak">
+      그날 기사들을 <b>둘씩 둘씩</b> 점수 매겨서<br>
+      <b>평균</b>을 내면 = 그날의 <b>평균 닮은 점수!</b><br>
+      (어른들은 "평균 코사인 유사도"라고 불러요 📐)
+    </div>
+    <div class="scroll-hint">👇</div>
+  </section>
 
+  <!-- ②-2 우연과 비교 (섞기 놀이) -->
+  <section class="page verify-page sec-sim">
+    <div class="badge red">② 닮은 점수</div>
+    <div class="num">2</div>
+    <h2>우연이라면 어땠을까? — 섞기 놀이 🔀</h2>
+    <p class="big">점수가 평소보다 높아도,<br><b>그냥 우연</b>일 수 있잖아요?<br>그래서 <b>우연 분포</b>를 만들어 비교해요.</p>
     <div class="dist-frame">
-      <div class="dist-cap">📏 평소 줄(빨간 점선)을 넘는 빨간 막대 = 급증일</div>
-      <svg viewBox="0 0 380 180" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px"><rect x="16.5" y="125.4" width="23.3" height="28.6" rx="2.5" fill="#9FCDF5"/><rect x="48.9" y="120.1" width="23.3" height="33.9" rx="2.5" fill="#9FCDF5"/><rect x="81.3" y="128.0" width="23.3" height="26.0" rx="2.5" fill="#9FCDF5"/><rect x="113.6" y="122.8" width="23.3" height="31.2" rx="2.5" fill="#9FCDF5"/><rect x="146.0" y="125.4" width="23.3" height="28.6" rx="2.5" fill="#9FCDF5"/><rect x="178.3" y="130.6" width="23.3" height="23.4" rx="2.5" fill="#9FCDF5"/><rect x="210.7" y="122.8" width="23.3" height="31.2" rx="2.5" fill="#9FCDF5"/><rect x="243.1" y="117.5" width="23.3" height="36.5" rx="2.5" fill="#FFC4BC"/><rect x="275.4" y="112.3" width="23.3" height="41.7" rx="2.5" fill="#FF7A6B"/><rect x="307.8" y="29.0" width="23.3" height="125.0" rx="2.5" fill="#FF7A6B"/><rect x="340.2" y="47.2" width="23.3" height="106.8" rx="2.5" fill="#FF7A6B"/><line x1="12" y1="114.5" x2="368" y2="114.5" stroke="#C23A2B" stroke-width="2.5" stroke-dasharray="7 4"/><text x="366" y="108.5" font-size="12" fill="#C23A2B" text-anchor="end" font-family="sans-serif">평소 줄 (μ+3σ)</text><line x1="238.5" y1="8" x2="238.5" y2="154" stroke="#9A8C70" stroke-width="1" stroke-dasharray="3 3"/><text x="14" y="172" font-size="11" fill="#5B86B0" font-family="sans-serif">← 평소(사전)</text><text x="366" y="172" font-size="11" fill="#C23A2B" text-anchor="end" font-family="sans-serif">이슈 후(사후) →</text><line x1="12" y1="154" x2="368" y2="154" stroke="#3B3024" stroke-width="2"/></svg>
+      <div class="dist-cap">🔀 카드를 수천 번 섞어 만든 "우연 점수들"</div>
+      <svg viewBox="0 0 340 150" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:340px"><rect x="11.8" y="128.0" width="10.3" height="0.0" rx="2.5" fill="#BFE6FF"/><rect x="25.7" y="128.0" width="10.3" height="0.0" rx="2.5" fill="#BFE6FF"/><rect x="39.6" y="127.9" width="10.3" height="0.1" rx="2.5" fill="#BFE6FF"/><rect x="53.5" y="127.7" width="10.3" height="0.3" rx="2.5" fill="#BFE6FF"/><rect x="67.5" y="126.8" width="10.3" height="1.2" rx="2.5" fill="#BFE6FF"/><rect x="81.4" y="124.1" width="10.3" height="3.9" rx="2.5" fill="#BFE6FF"/><rect x="95.3" y="116.9" width="10.3" height="11.1" rx="2.5" fill="#BFE6FF"/><rect x="109.2" y="102.2" width="10.3" height="25.8" rx="2.5" fill="#BFE6FF"/><rect x="123.1" y="78.2" width="10.3" height="49.8" rx="2.5" fill="#BFE6FF"/><rect x="137.0" y="48.4" width="10.3" height="79.6" rx="2.5" fill="#BFE6FF"/><rect x="150.9" y="22.4" width="10.3" height="105.6" rx="2.5" fill="#BFE6FF"/><rect x="164.9" y="12.0" width="10.3" height="116.0" rx="2.5" fill="#BFE6FF"/><rect x="178.8" y="22.4" width="10.3" height="105.6" rx="2.5" fill="#BFE6FF"/><rect x="192.7" y="48.4" width="10.3" height="79.6" rx="2.5" fill="#BFE6FF"/><rect x="206.6" y="78.2" width="10.3" height="49.8" rx="2.5" fill="#BFE6FF"/><rect x="220.5" y="102.2" width="10.3" height="25.8" rx="2.5" fill="#BFE6FF"/><rect x="234.4" y="116.9" width="10.3" height="11.1" rx="2.5" fill="#BFE6FF"/><rect x="248.3" y="124.1" width="10.3" height="3.9" rx="2.5" fill="#BFE6FF"/><rect x="262.2" y="126.8" width="10.3" height="1.2" rx="2.5" fill="#BFE6FF"/><rect x="276.2" y="127.7" width="10.3" height="0.3" rx="2.5" fill="#BFE6FF"/><rect x="290.1" y="127.9" width="10.3" height="0.1" rx="2.5" fill="#BFE6FF"/><rect x="304.0" y="128.0" width="10.3" height="0.0" rx="2.5" fill="#BFE6FF"/><rect x="317.9" y="128.0" width="10.3" height="0.0" rx="2.5" fill="#BFE6FF"/><line x1="10" y1="128" x2="330" y2="128" stroke="#3B3024" stroke-width="2"/><line x1="305" y1="20" x2="305" y2="128" stroke="#FF7A6B" stroke-width="3"/><polygon points="305,12 300,24 310,24" fill="#FF7A6B"/><text x="302" y="10" font-size="11" fill="#C23A2B" text-anchor="end" font-family="sans-serif">관측값</text></svg>
+      <div class="dist-axis">← 낮음 &nbsp;&nbsp; 닮은 점수 &nbsp;&nbsp; 높음 →</div>
+    </div>
+    <div class="speak">
+      우연히 나오는 점수들은 가운데에 <b>산 모양</b>으로 모여요 ⛰️<br>
+      그런데 <b>우리 점수(빨간 화살표)</b>는 저 멀리 끝!<br>
+      → "우연이 아니다 = <b>진짜 닮았다!</b>" ✅
     </div>
     <div class="scroll-hint">👇</div>
   </section>
 
-  <!-- 분포 ②-c : 우연한 하루 vs 진짜 + 최종판정 -->
-  <section class="page dist-page">
-    <div class="num">📈②¾</div>
-    <h2>한 번 넘은 거랑 계속 넘는 건 달라요</h2>
-
-    <div class="dice-row">
-      <div class="dice-card">
-        <div class="dice-emoji">🤏</div>
-        <div class="dice-t">딱 하루만 넘음</div>
-        <div class="dice-p">"우연일 수도?" 🤔</div>
-      </div>
-      <div class="dice-card rare">
-        <div class="dice-emoji">📈</div>
-        <div class="dice-t">며칠 계속 넘음</div>
-        <div class="dice-p">"진짜 늘었다!" 🚨</div>
-      </div>
-    </div>
-
-    <p class="big" style="margin-top:14px"><b>이틀 이상 연속</b>으로 넘거나,<br>넘은 양을 <b>계속 더해서</b> 봤더니 크면 → 진짜 급증!</p>
+  <!-- ②-3 착시 걷어내기 -->
+  <section class="page verify-page sec-sim">
+    <div class="badge red">② 닮은 점수</div>
+    <div class="num">3</div>
+    <h2>"많아서 닮아 보이는 착시"를 걷어내요</h2>
+    <p class="big">조심! 기사가 <b>많아지기만 해도</b><br>점수가 <b>저절로</b> 조금 올라가요. 🫢</p>
     <div class="speak">
-      🤓 넘은 양을 차곡차곡 더해가다<br>한계를 넘으면 경보가 울리는 방법을<br><b>"CUSUM(누적합 관리도)"</b>이라고 해요.
+      그래서 이렇게 확인해요:<br>
+      <b>"똑같은 개수"</b>의 기사를 <b>아무거나</b> 뽑았을 때보다<br>
+      우리 점수가 <b>더</b> 높은가?
     </div>
-
-    <div class="tip" style="margin-top:18px">
-      <b>✅ 최종 판정은 이렇게!</b><br>
-      그림(평소 줄)으로 <b>어느 날 넘었나</b>를 눈으로 보고,<br>
-      <b>음이항 회귀</b>로 "이슈 후 구간이 <b>통째로</b> 유의하게 늘었나"를 확인해요.<br>
-      이때 임계치는 기사 수가 아니라 <b>"우연일 확률 p &lt; 5%"</b>!<br>
-      p가 5%보다 작으면 → "우연이라 보기 어렵다 = 진짜 많아졌다" 🎉
+    <p class="big" style="margin-top:14px">
+      아무거나 뽑아도 그 점수면 → 그냥 많아서 그런 것 😐<br>
+      아무거나보다 <b>훨씬 높으면</b> → <b>진짜 베껴서 닮은 것!</b> 🚨
+    </p>
+    <div class="tip" style="margin-top:14px">
+      🤓 이렇게 "우연/무작위로 뽑은 것과 비교하기"가<br>
+      어린이 통계의 핵심이에요. <b>"평소·우연과 견줘서, 거기서 벗어나면 진짜"</b>!
     </div>
     <div class="scroll-hint">👇</div>
   </section>
 
-  <!-- 분포 ③: permutation 영분포 -->
-  <section class="page dist-page">
-    <div class="num">📈③</div>
-    <h2>"우연 분포" 만들기 — 섞기 놀이</h2>
-    <p class="big">닮은 점수가 진짜 높은지 보려면,<br><b>우연이라면 어땠을까?</b>를 그려봐요.</p>
-
-    <div class="dist-frame">
-      <div class="dist-cap">🔀 카드를 5000번 섞어서 그린 "우연 분포"</div>
-      <svg viewBox="0 0 340 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:340px"><rect x="11.8" y="138.0" width="10.3" height="0.0" rx="2.5" fill="#BFE6FF"/><rect x="25.7" y="138.0" width="10.3" height="0.0" rx="2.5" fill="#BFE6FF"/><rect x="39.6" y="137.9" width="10.3" height="0.1" rx="2.5" fill="#BFE6FF"/><rect x="53.5" y="137.7" width="10.3" height="0.3" rx="2.5" fill="#BFE6FF"/><rect x="67.5" y="136.7" width="10.3" height="1.3" rx="2.5" fill="#BFE6FF"/><rect x="81.4" y="133.7" width="10.3" height="4.3" rx="2.5" fill="#BFE6FF"/><rect x="95.3" y="126.0" width="10.3" height="12.0" rx="2.5" fill="#BFE6FF"/><rect x="109.2" y="110.0" width="10.3" height="28.0" rx="2.5" fill="#BFE6FF"/><rect x="123.1" y="83.9" width="10.3" height="54.1" rx="2.5" fill="#BFE6FF"/><rect x="137.0" y="51.5" width="10.3" height="86.5" rx="2.5" fill="#BFE6FF"/><rect x="150.9" y="23.3" width="10.3" height="114.7" rx="2.5" fill="#BFE6FF"/><rect x="164.9" y="12.0" width="10.3" height="126.0" rx="2.5" fill="#BFE6FF"/><rect x="178.8" y="23.3" width="10.3" height="114.7" rx="2.5" fill="#BFE6FF"/><rect x="192.7" y="51.5" width="10.3" height="86.5" rx="2.5" fill="#BFE6FF"/><rect x="206.6" y="83.9" width="10.3" height="54.1" rx="2.5" fill="#BFE6FF"/><rect x="220.5" y="110.0" width="10.3" height="28.0" rx="2.5" fill="#BFE6FF"/><rect x="234.4" y="126.0" width="10.3" height="12.0" rx="2.5" fill="#BFE6FF"/><rect x="248.3" y="133.7" width="10.3" height="4.3" rx="2.5" fill="#BFE6FF"/><rect x="262.2" y="136.7" width="10.3" height="1.3" rx="2.5" fill="#BFE6FF"/><rect x="276.2" y="137.7" width="10.3" height="0.3" rx="2.5" fill="#BFE6FF"/><rect x="290.1" y="137.9" width="10.3" height="0.1" rx="2.5" fill="#BFE6FF"/><rect x="304.0" y="138.0" width="10.3" height="0.0" rx="2.5" fill="#BFE6FF"/><rect x="317.9" y="138.0" width="10.3" height="0.0" rx="2.5" fill="#BFE6FF"/><line x1="10" y1="138" x2="330" y2="138" stroke="#3B3024" stroke-width="2"/><line x1="305" y1="20" x2="305" y2="138" stroke="#FF7A6B" stroke-width="3"/><polygon points="305,12 300,24 310,24" fill="#FF7A6B"/><text x="302" y="10" font-size="11" fill="#C23A2B" text-anchor="end" font-family="sans-serif">관측값</text></svg>
-      <div class="dist-axis">← 낮음 &nbsp;&nbsp; 닮은 점수 차이 &nbsp;&nbsp; 높음 →</div>
+  <!-- 두 지표 합치기 -->
+  <section class="page verify-page v-final">
+    <div class="num">✅</div>
+    <h2>두 가지가 <b>모두</b> 넘어야 진짜!</h2>
+    <div class="final-two">
+      <div class="fbox blue"><div class="fico">🧮</div><div><b>① 기사 수</b><br>평소 줄을 며칠 넘음</div></div>
+      <div class="plus">+</div>
+      <div class="fbox red"><div class="fico">📏</div><div><b>② 닮은 점수</b><br>우연보다 훨씬 높음</div></div>
     </div>
-
-    <div class="speak">
-      카드를 마구 섞어 "우연히 나올 점수들"을 잔뜩 모으면<br>가운데가 불룩한 <b>산 모양</b>이 돼요 ⛰️<br>
-      그런데 <b>우리 관측값(빨간 화살표)</b>은<br>저 멀리 <b>오른쪽 끝</b>에 있죠?
-    </div>
-    <p class="big" style="margin-top:12px">우연 산에서 <b>한참 벗어났으니</b><br>"우연이 아니다 = 진짜다!" ✅</p>
-    <div class="tip" style="margin-top:16px;font-size:clamp(15px,3.8vw,18px)">
-      🤓 이렇게 직접 섞어서 만든 우연 분포를 <b>"영분포(귀무분포)"</b>라고 해요.<br>
-      관측값이 이 분포의 <b>끝(예: 위 5%)</b>에 있으면 "유의하다"고 말한답니다.
+    <div class="speak" style="margin-top:18px">
+      <b>둘 다</b> 평소·우연을 넘으면<br>"기사 밀어내기 확실!" 🎉<br>
+      하나만 넘으면 → 그냥 큰 사건일 뿐이에요.
     </div>
     <div class="scroll-hint">👇</div>
   </section>
