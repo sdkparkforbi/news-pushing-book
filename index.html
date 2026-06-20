@@ -149,6 +149,37 @@
   .day-cap{font-size:14px;color:#7A6A52;margin-top:10px;line-height:1.4;}
   .vs{font-family:'Jua',sans-serif;font-size:24px;color:#9A8C70;align-self:center;}
 
+  /* 우연 vs 진짜 카드 */
+  .dice-row{display:flex;justify-content:center;gap:14px;margin:20px auto;flex-wrap:wrap;}
+  .dice-card{background:#fff;border:3px solid var(--ink);border-radius:16px;padding:16px 14px;width:200px;box-shadow:4px 4px 0 var(--shadow);text-align:center;}
+  .dice-card.rare{border-color:var(--red);background:#FFF4F2;}
+  .dice-emoji{font-size:44px;}
+  .dice-t{font-family:'Jua',sans-serif;font-size:16px;margin:8px 0 6px;line-height:1.3;}
+  .dice-p{font-size:16px;color:#7A6A52;}
+
+  /* 통계 검정 페이지 (어른용) */
+  .stats-page{
+    background:linear-gradient(180deg,#EAF4FF,#FFF7E6);
+    align-items:stretch;text-align:left;
+  }
+  .stats-page .num{margin-left:auto;margin-right:auto;}
+  .stats-page h2{text-align:center;font-size:clamp(22px,5.2vw,32px);}
+  .stat-card{
+    background:#fff;border:3px solid var(--ink);border-radius:16px;
+    padding:16px 18px;margin:0 auto 14px;max-width:580px;
+    box-shadow:4px 4px 0 var(--shadow);
+  }
+  .stat-card.concl{background:#FFF9E6;border-color:#E0A93F;}
+  .stat-h{font-family:'Jua',sans-serif;font-size:19px;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+  .dot{width:14px;height:14px;border-radius:50%;display:inline-block;flex:none;}
+  .dot.blue{background:var(--blue);}
+  .dot.red{background:var(--red);}
+  .dot.green{background:#6FBF4F;}
+  .stat-card p{font-size:16px;line-height:1.6;margin:0 0 8px;}
+  .stat-card p:last-child{margin-bottom:0;}
+  .stat-card .note{font-size:14px;color:#7A6A52;background:#F6F1E5;border-radius:10px;padding:8px 12px;}
+  .stat-card sub{font-size:.72em;}
+
   /* 참고자료 페이지 */
   .refs-page{
     background:linear-gradient(180deg,#FFF7E6,#F0E6FF);
@@ -373,22 +404,96 @@
     <div class="scroll-hint">👇</div>
   </section>
 
-  <!-- 10 -->
+  <!-- 10 : 우연일까? 진짜일까? (통계 검정 쉬운 버전) -->
   <section class="page pg-grass">
     <div class="num">10</div>
+    <div class="scene">🎲🤔</div>
+    <h2>우연일까? 진짜일까?</h2>
+    <p class="big">막대가 조금 높을 때도 있어요.<br>그냥 <b>운이 좋아서</b> 그런 걸까요,<br><b>진짜로</b> 많아진 걸까요?</p>
+
+    <div class="speak">
+      그래서 컴퓨터로 <b>"섞기 놀이"</b>를 해요! 🔀<br>
+      카드를 마구 섞어서 "이 정도 높이는<br><b>우연히도 자주 나오나?</b>" 세어봐요.
+    </div>
+
+    <div class="dice-row">
+      <div class="dice-card">
+        <div class="dice-emoji">🎲</div>
+        <div class="dice-t">우연히도 자주 나옴</div>
+        <div class="dice-p">"에이, 그냥 운이네~" 😌</div>
+      </div>
+      <div class="dice-card rare">
+        <div class="dice-emoji">⭐</div>
+        <div class="dice-t">우연으로는 거의 안 나옴</div>
+        <div class="dice-p">"이건 진짜다!" 🚨</div>
+      </div>
+    </div>
+
+    <p class="big" style="margin-top:14px">우연으로는 <b>거의 안 나오는</b> 높이면<br>"진짜 기사 밀어내기!"라고 말할 수 있어요 ✅</p>
+
+    <div class="tip" style="margin-top:18px;font-size:clamp(16px,4vw,20px)">
+      🤓 <b>한 가지 더!</b><br>
+      기사가 많아지면 <b>저절로</b> 조금 닮아 보이기도 해요.<br>
+      그래서 "<b>똑같은 수</b>의 기사를 아무거나 뽑았을 때보다도<br>더 닮았나?"까지 꼭 확인한답니다!
+    </div>
+    <div class="scroll-hint">👇</div>
+  </section>
+
+  <!-- 11 -->
+  <section class="page pg-grass">
+    <div class="num">11</div>
     <div class="scene">🎉</div>
     <h2>다 배웠어요!</h2>
     <div class="tip">
       <b>오늘의 정리 📚</b><br>
       어떤 일이 생기면, 거의 <b>똑같은 기사</b>를<br>
       <b>우르르 마구 찍어내요.</b><br>
-      그래서 ① <b>기사 수</b>가 평소보다 확 늘고<br>② <b>닮은 점수</b>도 평소보다 확 높으면<br>"기사 밀어내기 확실!" 이에요 ✅
+      그래서 ① <b>기사 수</b>가 평소보다 확 늘고<br>② <b>닮은 점수</b>도 평소보다 확 높으면<br>"기사 밀어내기 확실!" 이에요 ✅<br>
+      <span style="font-size:.85em">(단, <b>우연이 아닌지</b>도 꼭 확인해요 🎲)</span>
     </div>
     <div class="speak" style="margin-top:24px">참 잘했어요! 🌟</div>
     <div class="scroll-hint">더 알고 싶다면 👇</div>
   </section>
 
-  <!-- 9 : 참고자료 -->
+  <!-- 통계 검정 (어른용) -->
+  <section class="page stats-page">
+    <div class="num">🔬</div>
+    <h2>어떻게 통계로 검정하나요? (어른용)</h2>
+    <p class="refs-intro">"평소 줄"을 어떻게 긋고, 넘은 게 우연이 아님을<br>어떻게 확인하는지 정리했어요.</p>
+
+    <div class="stat-card">
+      <div class="stat-h"><span class="dot blue"></span>지표 정의 (시간대 t마다)</div>
+      <p><b>N<sub>t</sub></b> = 기사 수 &nbsp;·&nbsp; <b>S<sub>t</sub></b> = 기사쌍 평균 코사인 유사도</p>
+      <p class="note">임베딩을 단위벡터로 정규화하면 S<sub>t</sub> = (‖평균벡터‖² − 1/n)·n/(n−1) 로 빠르게 계산 (모든 쌍을 안 돌려도 됨).</p>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-h"><span class="dot red"></span>돋보기 ① 기사 수 N<sub>t</sub></div>
+      <p><b>H₀:</b> 사후 기사 수 = 사전(평소) &nbsp;|&nbsp; <b>H₁:</b> 사후 &gt; 사전 (단측)</p>
+      <p><b>검정:</b> 음이항 회귀 — log(μ<sub>t</sub>) = β₀ + β₁·post<sub>t</sub> + 요일더미 + 시간대더미. <b>β₁ &gt; 0 유의</b>면 주기성을 통제하고도 증가. exp(β₁) = "몇 배 늘었나".</p>
+      <p class="note">뉴스 기사 수는 과대산포가 커서 Poisson 대신 음이항(NB). 급증 시점은 Kleinberg(2003) 버스트 검출로도 가능.</p>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-h"><span class="dot red"></span>돋보기 ② 평균 유사도 S<sub>t</sub></div>
+      <p><b>H₀:</b> 사후 평균 유사도 = 사전 &nbsp;|&nbsp; <b>H₁:</b> 사후 &gt; 사전 (단측)</p>
+      <p><b>검정:</b> Permutation test — 사전/사후 라벨을 섞어 차이의 영분포를 만들고 단측 p. 유사도는 쌍끼리 독립이 아니라 t검정 부적합.</p>
+      <p class="note"><b>핵심 함정:</b> 기사 수가 늘면 평균 유사도가 기계적으로 오를 수 있음 → <b>무작위 배정 영모형</b>(같은 N에서 무작위로 뽑은 기사들의 기대 유사도)과 비교해 z = (S<sub>t</sub>−μ<sub>rand</sub>)/σ<sub>rand</sub>. "기사 수 효과"를 걷어낸 순수 유사도 증가만 인정.</p>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-h"><span class="dot green"></span>"평소 줄"과 급증 시점</div>
+      <p>사전 1주로 기준선(μ, σ) 추정 → 관리도(control chart) μ+3σ 초과, 또는 CUSUM으로 급증 구간 표시. N<sub>t</sub>·S<sub>t</sub> 두 선이 <b>함께</b> 기준선을 넘는 구간이 처널리즘 신호.</p>
+    </div>
+
+    <div class="stat-card concl">
+      <div class="stat-h"><span class="dot green"></span>판정</div>
+      <p>① 음이항 β₁ &gt; 0 유의 <b>AND</b> ② permutation·영모형에서 S<sub>t</sub> 유의 증가 → <b>두 조건 모두 충족 시 "기사 밀어내기"로 판정.</b></p>
+      <p class="note">"풀리는지(평균회귀)"는 보지 않음 — 큰 클러스터(스노우볼)의 발생 자체가 관심사. 패널 단위근과는 다른 문제.</p>
+    </div>
+  </section>
+
+  <!-- 참고자료 -->
   <section class="page refs-page">
     <div class="num">📚</div>
     <h2>더 알아보기 (어른용)</h2>
