@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>똑같은 기사가 너무 많아요! — 기사 밀어내기 그림책</title>
+
+<!-- 썸네일 / OG 이미지 -->
+<meta property="og:title" content="똑같은 기사가 너무 많아요! — 기사 밀어내기 그림책">
+<meta property="og:description" content="비슷한 기사가 우르르 쏟아져서 다른 기사를 밀어내는 현상을 초등학생도 알 수 있게 그림책으로 풀었어요.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://sdkparkforbi.github.io/news-pushing-book/thumbnail.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sdkparkforbi.github.io/news-pushing-book/thumbnail.png">
+<link rel="icon" type="image/png" href="thumbnail.png">
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Jua&family=Gaegu:wght@400;700&display=swap');
+
+  :root{
+    --paper:#FFF7E6;
+    --sky:#BFE6FF;
+    --sun:#FFD45E;
+    --grass:#A8E06A;
+    --ink:#3B3024;
+    --red:#FF7A6B;
+    --blue:#5BA8FF;
+    --shadow:rgba(59,48,36,.18);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Gaegu',sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    overflow-x:hidden;
+  }
+
+  /* 진행 막대 */
+  .bar{position:fixed;top:0;left:0;height:8px;width:0;background:var(--sun);z-index:99;transition:width .15s;}
+
+  .book{max-width:720px;margin:0 auto;}
+
+  .page{
+    min-height:100vh;
+    display:flex;flex-direction:column;
+    align-items:center;justify-content:center;
+    text-align:center;
+    padding:40px 24px 80px;
+    position:relative;
+  }
+
+  .num{
+    font-family:'Jua',sans-serif;
+    font-size:20px;color:#fff;
+    background:var(--red);
+    width:50px;height:50px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 6px 0 var(--shadow);
+    margin-bottom:24px;
+  }
+
+  h1{font-family:'Jua',sans-serif;line-height:1.3;}
+  .cover h1{font-size:clamp(34px,8vw,56px);color:var(--ink);}
+  .cover .sub{font-size:clamp(20px,4.5vw,26px);margin-top:18px;color:#7A6A52;}
+
+  h2{font-family:'Jua',sans-serif;font-size:clamp(26px,6vw,38px);line-height:1.35;margin-bottom:20px;}
+  p.big{font-size:clamp(20px,4.6vw,26px);line-height:1.7;max-width:520px;}
+
+  .scene{font-size:clamp(70px,18vw,130px);line-height:1;margin:10px 0 26px;}
+
+  /* 신문 더미 */
+  .stack{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;max-width:420px;margin:18px auto;}
+  .news{
+    background:#fff;border:3px solid var(--ink);border-radius:10px;
+    padding:14px 12px;width:92px;
+    box-shadow:4px 4px 0 var(--shadow);
+    font-size:15px;font-weight:700;
+    transform:rotate(var(--r));
+  }
+  .news .line{height:6px;background:#E5DCC8;border-radius:3px;margin-top:6px;}
+  .news.same{background:#FFE3DE;border-color:var(--red);}
+
+  .row{display:flex;justify-content:center;align-items:flex-end;gap:8px;margin:20px 0;flex-wrap:wrap;}
+
+  .speak{
+    background:#fff;border:3px dashed var(--blue);border-radius:18px;
+    padding:16px 20px;font-size:clamp(18px,4.2vw,22px);
+    max-width:480px;margin:18px auto 0;box-shadow:4px 4px 0 var(--shadow);
+  }
+
+  .tip{
+    background:var(--sun);border-radius:20px;
+    padding:22px 24px;max-width:520px;margin:20px auto 0;
+    box-shadow:6px 6px 0 var(--shadow);
+    font-size:clamp(18px,4.4vw,23px);line-height:1.6;
+  }
+  .tip b{font-family:'Jua',sans-serif;}
+
+  .step{
+    background:#fff;border:3px solid var(--ink);border-radius:18px;
+    padding:18px 20px;max-width:520px;margin:14px auto;
+    box-shadow:5px 5px 0 var(--shadow);text-align:left;
+    display:flex;gap:16px;align-items:center;
+  }
+  .step .emoji{font-size:46px;}
+  .step h3{font-family:'Jua',sans-serif;font-size:22px;margin-bottom:4px;}
+  .step p{font-size:18px;line-height:1.5;}
+
+  .scroll-hint{position:absolute;bottom:26px;font-size:18px;color:#9A8C70;animation:bob 1.4s infinite;}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+
+  .pg-sky{background:linear-gradient(180deg,var(--sky),var(--paper));}
+  .pg-grass{background:linear-gradient(180deg,var(--paper),#DFF3C2);}
+
+  footer{text-align:center;padding:40px 20px 60px;color:#9A8C70;font-size:16px;}
+
+  @media (prefers-reduced-motion: reduce){
+    .scroll-hint{animation:none;}
+  }
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+
+<div class="book">
+
+  <!-- 표지 -->
+  <section class="page cover pg-sky">
+    <div class="scene">📰📰📰</div>
+    <h1>똑같은 기사가<br>너무 많아요!</h1>
+    <p class="sub">— 기사 밀어내기 이야기 —</p>
+    <div class="scroll-hint">아래로 내려보세요 👇</div>
+  </section>
+
+  <!-- 1 -->
+  <section class="page">
+    <div class="num">1</div>
+    <div class="scene">🗞️😊</div>
+    <h2>뉴스가 뭐예요?</h2>
+    <p class="big">뉴스는 세상에서 일어난 <b>여러 가지 일</b>을 우리에게 알려줘요.<br>날씨, 운동, 과학, 동물… 정말 많아요!</p>
+    <div class="scroll-hint">👇</div>
+  </section>
+
+  <!-- 2 -->
+  <section class="page pg-grass">
+    <div class="num">2</div>
+    <h2>그런데 이런 일이…</h2>
+    <p class="big">어떤 일이 생기면, 여러 신문사가 <b>거의 똑같은 기사</b>를 우르르 만들어요.</p>
+    <div class="stack">
+      <div class="news same" style="--r:-5deg">고양이!<div class="line"></div><div class="line"></div></div>
+      <div class="news same" style="--r:3deg">고양이!<div class="line"></div><div class="line"></div></div>
+      <div class="news same" style="--r:-2deg">고양이!<div class="line"></div><div class="line"></div></div>
+      <div class="news same" style="--r:6deg">고양이!<div class="line"></div><div class="line"></div></div>
+      <div class="news same" style="--r:-4deg">고양이!<div class="line"></div><div class="line"></div></div>
+      <div class="news same" style="--r:2deg">고양이!<div class="line"></div><div class="line"></div></div>
+    </div>
+    <div class="scroll-hint">👇</div>
+  </section>
+
+  <!-- 3 -->
+  <section class="page">
+    <div class="num">3</div>
+    <div class="scene">😮</div>
+    <h2>다른 기사는 어디 갔지?</h2>
+    <p class="big">똑같은 기사가 너무 많으니까,<br>다른 재미있는 기사들이 <b>저 뒤로 밀려나요.</b></p>
+    <div class="row">
+      <div class="news same" style="--r:-4deg">고양이<div class="line"></div></div>
+      <div class="news same" style="--r:2deg">고양이<div class="line"></div></div>
+      <div class="news same" style="--r:5deg">고양이<div class="line"></div></div>
+      <div class="news" style="--r:-8deg;opacity:.5;">우주🚀<div class="line"></div></div>
+    </div>
+    <p class="big" style="margin-top:10px">우주 기사가 안 보여요! 😢</p>
+    <div class="scroll-hint">👇</div>
+  </section>
+
+  <!-- 4 -->
+  <section class="page pg-sky">
+    <div class="num">4</div>
+    <div class="scene">🚪💨</div>
+    <h2>이걸 "기사 밀어내기"라고 해요</h2>
+    <div class="speak">똑같은 기사가 많아서<br>다른 기사를 <b>쓱~ 밀어내는 것</b>이에요!</div>
+    <div class="scroll-hint">👇</div>
+  </section>
+
+  <!-- 5 -->
+  <section class="page pg-grass">
+    <div class="num">5</div>
+    <div class="scene">🕵️‍♀️🔍</div>
+    <h2>그럼 어떻게 알아낼까요?</h2>
+    <p class="big">우리는 <b>탐정</b>이 되어 3가지를 살펴봐요!</p>
+    <div class="scroll-hint">👇</div>
+  </section>
+
+  <!-- 6 -->
+  <section class="page">
+    <div class="num">6</div>
+    <h2>탐정의 3가지 돋보기 🔎</h2>
+
+    <div class="step">
+      <div class="emoji">🧮</div>
+      <div>
+        <h3>① 개수 세기</h3>
+        <p>하루에 비슷한 기사가 <b>갑자기 확 늘었나?</b> 평소보다 너무 많으면 "삐뽀삐뽀!"</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="emoji">👯</div>
+      <div>
+        <h3>② 닮은 기사 묶기</h3>
+        <p>내용이 <b>쌍둥이처럼 닮은</b> 기사끼리 한 바구니에 모아요. 바구니가 크면 의심!</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="emoji">🌈</div>
+      <div>
+        <h3>③ 다양한지 보기</h3>
+        <p>기사 색깔이 <b>알록달록 많은가?</b> 한 가지 색만 가득하면 밀어내기예요!</p>
+      </div>
+    </div>
+    <div class="scroll-hint">👇</div>
+  </section>
+
+  <!-- 7 -->
+  <section class="page pg-sky">
+    <div class="num">7</div>
+    <div class="scene">🎨</div>
+    <h2>색깔로 쉽게 볼까요?</h2>
+    <p class="big">기사가 <b>알록달록</b>하면 건강해요 🌈</p>
+    <div class="row">
+      <div class="news" style="--r:-6deg;background:#FFE0E0">🐱</div>
+      <div class="news" style="--r:3deg;background:#E0F0FF">🚀</div>
+      <div class="news" style="--r:-2deg;background:#E6FFD9">⚽</div>
+      <div class="news" style="--r:5deg;background:#FFF3CC">🎵</div>
+    </div>
+    <p class="big" style="margin-top:14px">기사가 <b>한 색깔</b>뿐이면 밀어내기 신호 🚨</p>
+    <div class="row">
+      <div class="news same" style="--r:-4deg">🐱</div>
+      <div class="news same" style="--r:2deg">🐱</div>
+      <div class="news same" style="--r:6deg">🐱</div>
+      <div class="news same" style="--r:-3deg">🐱</div>
+    </div>
+    <div class="scroll-hint">👇</div>
+  </section>
+
+  <!-- 8 -->
+  <section class="page pg-grass">
+    <div class="num">8</div>
+    <div class="scene">🎉</div>
+    <h2>다 배웠어요!</h2>
+    <div class="tip">
+      <b>오늘의 정리 📚</b><br>
+      똑같은 기사가 <b>너무 많이</b> 생기면,<br>
+      다른 기사를 <b>밀어내요.</b><br>
+      그래서 우리는 ① 개수 세고 ② 닮은 기사 묶고 ③ 색깔이 다양한지 보면 돼요!
+    </div>
+    <div class="speak" style="margin-top:24px">참 잘했어요! 🌟</div>
+  </section>
+
+</div>
+
+<footer>
+  📖 기사 밀어내기 그림책 · 만든이 sdkparkforbi
+</footer>
+
+<script>
+  const bar=document.getElementById('bar');
+  window.addEventListener('scroll',()=>{
+    const h=document.documentElement;
+    const p=(h.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+    bar.style.width=p+'%';
+  });
+</script>
+</body>
+</html>
