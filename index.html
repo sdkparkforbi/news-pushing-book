@@ -113,7 +113,53 @@
   .pg-sky{background:linear-gradient(180deg,var(--sky),var(--paper));}
   .pg-grass{background:linear-gradient(180deg,var(--paper),#DFF3C2);}
 
+  /* 닮은 점수 표시 */
+  .num-score{
+    font-family:'Jua',sans-serif;font-size:clamp(20px,5vw,28px);
+    margin-top:10px;padding:8px 20px;border-radius:30px;display:inline-block;
+  }
+  .num-score.low{background:#D9F5C9;color:#3F7A28;}
+  .num-score.high{background:#FFD9D4;color:#C23A2B;}
+
+  /* 평소 vs 이슈날 비교 막대 */
+  .compare{display:flex;align-items:flex-end;justify-content:center;gap:14px;margin:22px auto;flex-wrap:wrap;}
+  .day{background:#fff;border:3px solid var(--ink);border-radius:16px;padding:14px 12px 12px;width:150px;box-shadow:4px 4px 0 var(--shadow);}
+  .day.big-day{border-color:var(--red);}
+  .day-label{font-family:'Jua',sans-serif;font-size:18px;margin-bottom:10px;}
+  .bars{display:flex;align-items:flex-end;justify-content:center;gap:8px;height:110px;}
+  .bars span{width:24px;background:var(--blue);border-radius:6px 6px 0 0;}
+  .big-day .bars span{background:var(--red);}
+  .day-cap{font-size:14px;color:#7A6A52;margin-top:10px;line-height:1.4;}
+  .vs{font-family:'Jua',sans-serif;font-size:24px;color:#9A8C70;align-self:center;}
+
+  /* 참고자료 페이지 */
+  .refs-page{
+    background:linear-gradient(180deg,#FFF7E6,#F0E6FF);
+    align-items:stretch;text-align:left;
+  }
+  .refs-page .num{margin-left:auto;margin-right:auto;}
+  .refs-page h2{text-align:center;}
+  .refs-intro{text-align:center;font-size:clamp(17px,4vw,21px);color:#7A6A52;margin-bottom:24px;}
+  .ref{
+    background:#fff;border:3px solid var(--ink);border-radius:16px;
+    padding:16px 18px;margin:0 auto 14px;max-width:560px;
+    box-shadow:4px 4px 0 var(--shadow);
+    font-family:'Gaegu',sans-serif;
+  }
+  .ref .tag{
+    display:inline-block;background:var(--blue);color:#fff;
+    font-family:'Jua',sans-serif;font-size:13px;
+    padding:3px 10px;border-radius:20px;margin-bottom:8px;
+  }
+  .ref .tag.b{background:var(--red);}
+  .ref .tag.g{background:#6FBF4F;}
+  .ref p{font-size:17px;line-height:1.5;margin:0;}
+  .ref .who{font-weight:700;}
+  .ref a{color:#2E7DD1;word-break:break-all;}
+  .ref .why{font-size:15px;color:#7A6A52;margin-top:6px;}
+
   footer{text-align:center;padding:40px 20px 60px;color:#9A8C70;font-size:16px;}
+  footer a{color:#2E7DD1;}
 
   @media (prefers-reduced-motion: reduce){
     .scroll-hint{animation:none;}
@@ -188,81 +234,156 @@
     <div class="num">5</div>
     <div class="scene">🕵️‍♀️🔍</div>
     <h2>그럼 어떻게 알아낼까요?</h2>
-    <p class="big">우리는 <b>탐정</b>이 되어 3가지를 살펴봐요!</p>
+    <p class="big">우리는 <b>탐정</b>이 되어<br>딱 <b>2가지</b>만 재보면 돼요!</p>
     <div class="scroll-hint">👇</div>
   </section>
 
   <!-- 6 -->
   <section class="page">
     <div class="num">6</div>
-    <h2>탐정의 3가지 돋보기 🔎</h2>
+    <h2>탐정의 2가지 돋보기 🔎</h2>
 
     <div class="step">
       <div class="emoji">🧮</div>
       <div>
-        <h3>① 개수 세기</h3>
-        <p>하루에 비슷한 기사가 <b>갑자기 확 늘었나?</b> 평소보다 너무 많으면 "삐뽀삐뽀!"</p>
+        <h3>① 기사 수 — 몇 개나?</h3>
+        <p>그날 기사가 <b>갑자기 확 늘었나?</b> 평소보다 너무 많으면 "삐뽀삐뽀!"</p>
       </div>
     </div>
 
     <div class="step">
       <div class="emoji">👯</div>
       <div>
-        <h3>② 닮은 기사 묶기</h3>
-        <p>내용이 <b>쌍둥이처럼 닮은</b> 기사끼리 한 바구니에 모아요. 바구니가 크면 의심!</p>
+        <h3>② 닮은 정도 — 얼마나 비슷해?</h3>
+        <p>기사들이 서로 <b>얼마나 닮았나</b> 점수로 재요. 너무 닮았으면 "베낀 거 아냐?" 🤔</p>
       </div>
     </div>
 
-    <div class="step">
-      <div class="emoji">🌈</div>
-      <div>
-        <h3>③ 다양한지 보기</h3>
-        <p>기사 색깔이 <b>알록달록 많은가?</b> 한 가지 색만 가득하면 밀어내기예요!</p>
-      </div>
+    <div class="speak" style="margin-top:18px">
+      이 <b>두 가지가 함께 쑥</b> 올라가면<br>기사 밀어내기예요!
     </div>
     <div class="scroll-hint">👇</div>
   </section>
 
-  <!-- 7 -->
+  <!-- 7 : 닮은 정도 점수 = 코사인 유사도 -->
   <section class="page pg-sky">
     <div class="num">7</div>
-    <div class="scene">🎨</div>
-    <h2>색깔로 쉽게 볼까요?</h2>
-    <p class="big">기사가 <b>알록달록</b>하면 건강해요 🌈</p>
+    <div class="scene">📏</div>
+    <h2>"닮은 정도"는 점수로 재요</h2>
+    <p class="big">기사를 <b>숫자 화살표</b>로 바꾸고,<br>두 화살표가 같은 쪽을 보면 <b>닮은 점수 1점</b>에 가까워요!</p>
+    <div class="speak">이 점수를 어른들은<br><b>"코사인 유사도"</b>라고 불러요 📐</div>
+
+    <p class="big" style="margin-top:24px"><b>알록달록</b>하면 점수가 낮아요 🌈 (건강!)</p>
     <div class="row">
       <div class="news" style="--r:-6deg;background:#FFE0E0">🐱</div>
       <div class="news" style="--r:3deg;background:#E0F0FF">🚀</div>
       <div class="news" style="--r:-2deg;background:#E6FFD9">⚽</div>
       <div class="news" style="--r:5deg;background:#FFF3CC">🎵</div>
     </div>
-    <p class="big" style="margin-top:14px">기사가 <b>한 색깔</b>뿐이면 밀어내기 신호 🚨</p>
+    <p class="num-score low">닮은 점수: 0.1 😀</p>
+
+    <p class="big" style="margin-top:18px"><b>한 색깔</b>뿐이면 점수가 높아요 🚨</p>
     <div class="row">
       <div class="news same" style="--r:-4deg">🐱</div>
       <div class="news same" style="--r:2deg">🐱</div>
       <div class="news same" style="--r:6deg">🐱</div>
       <div class="news same" style="--r:-3deg">🐱</div>
     </div>
+    <p class="num-score high">닮은 점수: 0.9 😱</p>
+    <div class="scroll-hint">👇</div>
+  </section>
+
+  <!-- 7.5 : 평소와 비교 (검정) -->
+  <section class="page pg-grass">
+    <div class="num">8</div>
+    <div class="scene">📊</div>
+    <h2>"평소보다" 많아야 진짜예요!</h2>
+    <p class="big">조금 닮거나 조금 많은 건 괜찮아요.<br>중요한 건 <b>평소랑 비교</b>하는 거예요!</p>
+
+    <div class="compare">
+      <div class="day">
+        <div class="day-label">평소 날 😌</div>
+        <div class="bars"><span style="height:30%"></span><span style="height:25%"></span><span style="height:35%"></span></div>
+        <div class="day-cap">기사 조금 · 닮은 점수 낮음</div>
+      </div>
+      <div class="vs">VS</div>
+      <div class="day big-day">
+        <div class="day-label">이슈 터진 날 😲</div>
+        <div class="bars"><span style="height:95%"></span><span style="height:90%"></span><span style="height:100%"></span></div>
+        <div class="day-cap">기사 엄청 · 닮은 점수 높음</div>
+      </div>
+    </div>
+
+    <div class="speak" style="margin-top:8px">
+      평소보다 <b>훨씬</b> 높으면<br>"기사 밀어내기 확실!" ✅
+    </div>
     <div class="scroll-hint">👇</div>
   </section>
 
   <!-- 8 -->
   <section class="page pg-grass">
-    <div class="num">8</div>
+    <div class="num">9</div>
     <div class="scene">🎉</div>
     <h2>다 배웠어요!</h2>
     <div class="tip">
       <b>오늘의 정리 📚</b><br>
       똑같은 기사가 <b>너무 많이</b> 생기면,<br>
       다른 기사를 <b>밀어내요.</b><br>
-      그래서 우리는 ① 개수 세고 ② 닮은 기사 묶고 ③ 색깔이 다양한지 보면 돼요!
+      그래서 ① <b>기사 수</b>가 평소보다 확 늘고<br>② <b>닮은 점수</b>도 평소보다 확 높으면<br>"기사 밀어내기 확실!" 이에요 ✅
     </div>
     <div class="speak" style="margin-top:24px">참 잘했어요! 🌟</div>
+    <div class="scroll-hint">더 알고 싶다면 👇</div>
+  </section>
+
+  <!-- 9 : 참고자료 -->
+  <section class="page refs-page">
+    <div class="num">📚</div>
+    <h2>더 알아보기 (어른용)</h2>
+    <p class="refs-intro">이 그림책 이야기의 진짜 출처예요.<br>선생님·부모님과 함께 보세요!</p>
+
+    <div class="ref">
+      <span class="tag b">개념의 시작</span>
+      <p><span class="who">Nick Davies (2008).</span> 『Flat Earth News』. Chatto &amp; Windus.</p>
+      <p class="why">"처널리즘(churnalism)" — 기자들이 보도자료·통신 기사를 거의 그대로 찍어내듯 쏟아내는 현상을 널리 알린 책이에요. ('우르르 똑같은 기사'의 출발점!)</p>
+      <p><a href="https://en.wikipedia.org/wiki/Churnalism" target="_blank" rel="noopener">en.wikipedia.org/wiki/Churnalism</a></p>
+    </div>
+
+    <div class="ref">
+      <span class="tag b">학술 근거</span>
+      <p><span class="who">Lewis, Williams &amp; Franklin (2008).</span> "A compromised fourth estate?" <i>Journalism Studies</i>, 9(1).</p>
+      <p class="why">영국 카디프대 연구팀이 실제로 기사 출처를 분석해, 많은 기사가 원본 취재가 아니라 PR·통신 자료에서 나왔음을 보여줬어요.</p>
+    </div>
+
+    <div class="ref">
+      <span class="tag g">돋보기 ① 기사 수</span>
+      <p><span class="who">음이항 회귀 (Negative Binomial Regression)</span> · 요일·시간대 통제 + 사전/사후 비교</p>
+      <p class="why">기사 수가 '평소보다' 유의하게 늘었는지 검정해요. 뉴스 기사 수는 과대산포가 커서 포아송 대신 음이항을 써요. 급증 시점은 Kleinberg(2003)의 버스트 검출로도 잡을 수 있어요.</p>
+      <p><a href="https://www.cs.cornell.edu/home/kleinberg/bhs.pdf" target="_blank" rel="noopener">cs.cornell.edu/home/kleinberg/bhs.pdf</a></p>
+    </div>
+
+    <div class="ref">
+      <span class="tag g">돋보기 ② 닮은 점수 (코사인 유사도)</span>
+      <p><span class="who">Reimers &amp; Gurevych (2019).</span> "Sentence-BERT." <i>EMNLP</i>. (한국어: KoSBERT / ko-sroberta)</p>
+      <p class="why">기사를 임베딩(숫자 화살표)으로 바꿔 평균 코사인 유사도를 구해요. '기사 수가 늘어 유사도가 자동으로 오른 착시'는 무작위 배정 영모형으로 걷어내요.</p>
+      <p><a href="https://arxiv.org/abs/1908.10084" target="_blank" rel="noopener">arxiv.org/abs/1908.10084</a></p>
+    </div>
+
+    <div class="ref">
+      <span class="tag">검정 방법 — 평소와 비교</span>
+      <p><span class="who">Permutation test</span> · 사전/사후 라벨을 섞어 영분포를 만들고 단측 검정.</p>
+      <p class="why">"평소보다 확실한 증가"는 사전 1주로 기준선(μ, σ)을 잡아 관리도(control chart)·CUSUM으로 급증 구간을 봐요. 기사 수와 닮은 점수가 <b>함께</b> 솟을 때 처널리즘 신호!</p>
+    </div>
+
+    <div class="speak" style="margin-top:8px;text-align:center">
+      쉬운 그림책 → 진짜 연구로 가는 다리예요 🌉
+    </div>
   </section>
 
 </div>
 
 <footer>
-  📖 기사 밀어내기 그림책 · 만든이 sdkparkforbi
+  📖 기사 밀어내기 그림책 · 만든이 sdkparkforbi<br>
+  <a href="https://sdkparkforbi.github.io/news-pushing-book/" target="_blank" rel="noopener">https://sdkparkforbi.github.io/news-pushing-book/</a>
 </footer>
 
 <script>
