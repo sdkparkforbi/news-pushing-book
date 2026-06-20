@@ -169,6 +169,12 @@
   .dist-cap{font-family:'Jua',sans-serif;font-size:16px;margin-bottom:10px;line-height:1.35;}
   .dist-axis{font-size:13px;color:#9A8C70;margin-top:6px;text-align:center;}
 
+  /* 3단계 절차 박스 */
+  .step3{max-width:480px;margin:18px auto;text-align:left;}
+  .s3{display:flex;gap:12px;align-items:flex-start;background:#fff;border:3px solid var(--ink);border-radius:14px;padding:12px 14px;margin-bottom:10px;box-shadow:3px 3px 0 var(--shadow);}
+  .s3n{flex:none;width:30px;height:30px;border-radius:50%;background:var(--red);color:#fff;font-family:'Jua',sans-serif;display:flex;align-items:center;justify-content:center;font-size:16px;}
+  .s3 div{font-size:16px;line-height:1.5;}
+
   /* 통계 검정 페이지 (어른용) */
   .stats-page{
     background:linear-gradient(180deg,#EAF4FF,#FFF7E6);
@@ -516,8 +522,70 @@
       "오른쪽 꼬리가 긴 포아송의 형님" 같은 거예요 💪
     </div>
     <div class="tip" style="margin-top:16px;font-size:clamp(15px,3.8vw,18px)">
-      🤓 <b>왜 음이항?</b> 포아송은 "평균=흩어진 정도"라고 우겨요.<br>
-      그런데 뉴스는 흩어진 정도가 훨씬 커서, 포아송을 쓰면<br><b>"이게 평소냐 폭발이냐"</b>를 잘못 판단해요. 음이항은 그 넓음을 봐줘요!
+      🤓 <b>음이항 분포란?</b><br>
+      "개수를 세는 분포"인데 <b>포아송보다 더 넓게 퍼질 수 있어요.</b><br>
+      포아송은 "평균 = 흩어진 정도"로 고정인데,<br>
+      음이항은 <b>흩어짐 손잡이(α)</b>가 따로 있어서<br>
+      평균은 같아도 <b>더 들쭉날쭉한 모양</b>을 그릴 수 있어요.<br>
+      → 그래서 "이게 평소냐 폭발이냐"를 정직하게 구분해 줘요!
+    </div>
+    <div class="scroll-hint">👇</div>
+  </section>
+
+  <!-- 분포 ②-b : 임계치(평소 줄) 설정과 판정 -->
+  <section class="page dist-page">
+    <div class="num">📈②½</div>
+    <h2>"평소 줄"은 이렇게 긋고, 이렇게 넘었는지 봐요</h2>
+    <p class="big">기사 수가 "많다"고 하려면<br><b>넘어야 할 선(임계치)</b>이 있어야겠죠?</p>
+
+    <div class="step3">
+      <div class="s3"><span class="s3n">1</span>
+        <div><b>평소 키를 잰다</b><br>사전 1주의 하루 기사 수로 <b>평균(μ)</b>과 <b>들쭉날쭉(σ)</b>을 구해요.</div>
+      </div>
+      <div class="s3"><span class="s3n">2</span>
+        <div><b>평소 줄을 긋는다</b><br>임계치 = <b>μ + 3σ</b> (평소 평균에서 표준편차 3칸 위).<br>평소라면 <b>거의 안 넘는 높이</b>예요. (1000일 중 ≈1일)</div>
+      </div>
+      <div class="s3"><span class="s3n">3</span>
+        <div><b>넘었는지 본다</b><br>사후에 이 줄을 넘는 날 = <b>급증일 🚨</b>.<br>단, 하루만 삐죽 넘는 건 우연일 수 있어요.</div>
+      </div>
+    </div>
+
+    <div class="dist-frame">
+      <div class="dist-cap">📏 평소 줄(빨간 점선)을 넘는 빨간 막대 = 급증일</div>
+      <svg viewBox="0 0 380 180" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px"><rect x="16.5" y="125.4" width="23.3" height="28.6" rx="2.5" fill="#9FCDF5"/><rect x="48.9" y="120.1" width="23.3" height="33.9" rx="2.5" fill="#9FCDF5"/><rect x="81.3" y="128.0" width="23.3" height="26.0" rx="2.5" fill="#9FCDF5"/><rect x="113.6" y="122.8" width="23.3" height="31.2" rx="2.5" fill="#9FCDF5"/><rect x="146.0" y="125.4" width="23.3" height="28.6" rx="2.5" fill="#9FCDF5"/><rect x="178.3" y="130.6" width="23.3" height="23.4" rx="2.5" fill="#9FCDF5"/><rect x="210.7" y="122.8" width="23.3" height="31.2" rx="2.5" fill="#9FCDF5"/><rect x="243.1" y="117.5" width="23.3" height="36.5" rx="2.5" fill="#FFC4BC"/><rect x="275.4" y="112.3" width="23.3" height="41.7" rx="2.5" fill="#FF7A6B"/><rect x="307.8" y="29.0" width="23.3" height="125.0" rx="2.5" fill="#FF7A6B"/><rect x="340.2" y="47.2" width="23.3" height="106.8" rx="2.5" fill="#FF7A6B"/><line x1="12" y1="114.5" x2="368" y2="114.5" stroke="#C23A2B" stroke-width="2.5" stroke-dasharray="7 4"/><text x="366" y="108.5" font-size="12" fill="#C23A2B" text-anchor="end" font-family="sans-serif">평소 줄 (μ+3σ)</text><line x1="238.5" y1="8" x2="238.5" y2="154" stroke="#9A8C70" stroke-width="1" stroke-dasharray="3 3"/><text x="14" y="172" font-size="11" fill="#5B86B0" font-family="sans-serif">← 평소(사전)</text><text x="366" y="172" font-size="11" fill="#C23A2B" text-anchor="end" font-family="sans-serif">이슈 후(사후) →</text><line x1="12" y1="154" x2="368" y2="154" stroke="#3B3024" stroke-width="2"/></svg>
+    </div>
+    <div class="scroll-hint">👇</div>
+  </section>
+
+  <!-- 분포 ②-c : 우연한 하루 vs 진짜 + 최종판정 -->
+  <section class="page dist-page">
+    <div class="num">📈②¾</div>
+    <h2>한 번 넘은 거랑 계속 넘는 건 달라요</h2>
+
+    <div class="dice-row">
+      <div class="dice-card">
+        <div class="dice-emoji">🤏</div>
+        <div class="dice-t">딱 하루만 넘음</div>
+        <div class="dice-p">"우연일 수도?" 🤔</div>
+      </div>
+      <div class="dice-card rare">
+        <div class="dice-emoji">📈</div>
+        <div class="dice-t">며칠 계속 넘음</div>
+        <div class="dice-p">"진짜 늘었다!" 🚨</div>
+      </div>
+    </div>
+
+    <p class="big" style="margin-top:14px"><b>이틀 이상 연속</b>으로 넘거나,<br>넘은 양을 <b>계속 더해서</b> 봤더니 크면 → 진짜 급증!</p>
+    <div class="speak">
+      🤓 넘은 양을 차곡차곡 더해가다<br>한계를 넘으면 경보가 울리는 방법을<br><b>"CUSUM(누적합 관리도)"</b>이라고 해요.
+    </div>
+
+    <div class="tip" style="margin-top:18px">
+      <b>✅ 최종 판정은 이렇게!</b><br>
+      그림(평소 줄)으로 <b>어느 날 넘었나</b>를 눈으로 보고,<br>
+      <b>음이항 회귀</b>로 "이슈 후 구간이 <b>통째로</b> 유의하게 늘었나"를 확인해요.<br>
+      이때 임계치는 기사 수가 아니라 <b>"우연일 확률 p &lt; 5%"</b>!<br>
+      p가 5%보다 작으면 → "우연이라 보기 어렵다 = 진짜 많아졌다" 🎉
     </div>
     <div class="scroll-hint">👇</div>
   </section>
