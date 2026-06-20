@@ -121,6 +121,23 @@
   .num-score.low{background:#D9F5C9;color:#3F7A28;}
   .num-score.high{background:#FFD9D4;color:#C23A2B;}
 
+  /* 기사 수 막대 (요일별) */
+  .count-chart{display:flex;align-items:flex-end;justify-content:center;gap:10px;height:150px;margin:20px auto;max-width:420px;}
+  .cbar{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;}
+  .cbar span{width:34px;background:var(--blue);border-radius:6px 6px 0 0;display:block;}
+  .cbar.big span{background:var(--red);}
+  .cbar small{font-family:'Jua',sans-serif;font-size:14px;margin-top:6px;color:#7A6A52;}
+
+  /* 평소 줄(기준선) 차트 */
+  .baseline-box{background:#fff;border:3px solid var(--ink);border-radius:16px;padding:16px;max-width:480px;margin:18px auto;box-shadow:4px 4px 0 var(--shadow);}
+  .bl-title{font-family:'Jua',sans-serif;font-size:18px;margin-bottom:14px;}
+  .bl-chart{position:relative;display:flex;align-items:flex-end;justify-content:center;gap:12px;height:130px;padding-top:6px;}
+  .bl-line{position:absolute;left:0;right:0;top:42%;border-top:3px dashed #E0954F;}
+  .bl-line span{position:absolute;right:0;top:-22px;font-size:13px;color:#C97A2E;background:#FFF;padding:0 4px;font-family:'Jua',sans-serif;}
+  .blbar{width:38px;background:var(--blue);border-radius:6px 6px 0 0;}
+  .blbar.over{background:var(--red);}
+  .bl-cap{font-size:15px;color:#7A6A52;margin-top:12px;text-align:center;}
+
   /* 평소 vs 이슈날 비교 막대 */
   .compare{display:flex;align-items:flex-end;justify-content:center;gap:14px;margin:22px auto;flex-wrap:wrap;}
   .day{background:#fff;border:3px solid var(--ink);border-radius:16px;padding:14px 12px 12px;width:150px;box-shadow:4px 4px 0 var(--shadow);}
@@ -293,36 +310,72 @@
     <div class="scroll-hint">👇</div>
   </section>
 
-  <!-- 7.5 : 평소와 비교 (검정) -->
+  <!-- 8 : 기사 수 세기 -->
   <section class="page pg-grass">
     <div class="num">8</div>
+    <div class="scene">🧮📰</div>
+    <h2>그날 기사가 <b>몇 개</b>일까?</h2>
+    <p class="big">매일매일 기사 수를 <b>세어서 막대</b>로 그려봐요.<br>평소엔 조금, 이슈가 터지면 <b>확!</b> 늘어요.</p>
+
+    <div class="count-chart">
+      <div class="cbar"><span style="height:22%"></span><small>월</small></div>
+      <div class="cbar"><span style="height:30%"></span><small>화</small></div>
+      <div class="cbar"><span style="height:26%"></span><small>수</small></div>
+      <div class="cbar"><span style="height:35%"></span><small>목</small></div>
+      <div class="cbar big"><span style="height:100%"></span><small>금🔥</small></div>
+      <div class="cbar big"><span style="height:88%"></span><small>토</small></div>
+    </div>
+    <p class="big" style="margin-top:6px">금요일에 <b>갑자기 쑥!</b> 올라갔죠? 📈</p>
+
+    <div class="speak">
+      "이게 평소 떨림일까, <b>진짜 많아진 걸까?</b>"<br>그래서 <b>평소 줄(기준선)</b>을 그어서 비교해요!
+    </div>
+    <div class="scroll-hint">👇</div>
+  </section>
+
+  <!-- 9 : 평소와 비교 (종합 검정) -->
+  <section class="page pg-sky">
+    <div class="num">9</div>
     <div class="scene">📊</div>
     <h2>"평소보다" 많아야 진짜예요!</h2>
-    <p class="big">조금 닮거나 조금 많은 건 괜찮아요.<br>중요한 건 <b>평소랑 비교</b>하는 거예요!</p>
+    <p class="big">조금 닮거나 조금 많은 건 괜찮아요.<br>중요한 건 <b>평소 줄을 넘었는지</b> 보는 거예요!</p>
+
+    <div class="baseline-box">
+      <div class="bl-title">📏 기사 수 — 평소 줄을 넘었나?</div>
+      <div class="bl-chart">
+        <div class="bl-line"><span>평소 줄</span></div>
+        <div class="blbar" style="height:25%"></div>
+        <div class="blbar" style="height:32%"></div>
+        <div class="blbar" style="height:28%"></div>
+        <div class="blbar over" style="height:92%"></div>
+        <div class="blbar over" style="height:85%"></div>
+      </div>
+      <div class="bl-cap">빨간 막대가 평소 줄을 <b>훌쩍</b> 넘었어요 🚨</div>
+    </div>
 
     <div class="compare">
       <div class="day">
         <div class="day-label">평소 날 😌</div>
         <div class="bars"><span style="height:30%"></span><span style="height:25%"></span><span style="height:35%"></span></div>
-        <div class="day-cap">기사 조금 · 닮은 점수 낮음</div>
+        <div class="day-cap">기사 수 보통 · 닮은 점수 낮음</div>
       </div>
       <div class="vs">VS</div>
       <div class="day big-day">
         <div class="day-label">이슈 터진 날 😲</div>
         <div class="bars"><span style="height:95%"></span><span style="height:90%"></span><span style="height:100%"></span></div>
-        <div class="day-cap">기사 엄청 · 닮은 점수 높음</div>
+        <div class="day-cap">기사 수 폭발 · 닮은 점수 높음</div>
       </div>
     </div>
 
     <div class="speak" style="margin-top:8px">
-      평소보다 <b>훨씬</b> 높으면<br>"기사 밀어내기 확실!" ✅
+      <b>기사 수</b>도 평소보다 쑥,<br><b>닮은 점수</b>도 평소보다 쑥!<br>둘 다 넘으면 "기사 밀어내기 확실!" ✅
     </div>
     <div class="scroll-hint">👇</div>
   </section>
 
-  <!-- 8 -->
+  <!-- 10 -->
   <section class="page pg-grass">
-    <div class="num">9</div>
+    <div class="num">10</div>
     <div class="scene">🎉</div>
     <h2>다 배웠어요!</h2>
     <div class="tip">
